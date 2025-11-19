@@ -47,79 +47,80 @@ section{padding:120px 60px;text-align:center;}
 section h2{font-size:40px;font-weight:800;margin-bottom:30px;}
 .purpose-text{margin:auto;max-width:680px;line-height:1.7;font-size:17px;opacity:.88;}
 
-/* WHAT WE OFFER */
-.offer-titlewrap{display:flex;align-items:center;gap:10px;width:100%;max-width:1100px;margin:auto;margin-bottom:32px;}
-.offer-dot{width:18px;height:18px;background:#00c12d;border-radius:50%;}
-.offer-grid{
-  margin:auto;
-  margin-top:30px;
-  max-width:1100px;
-  display:grid;
-  gap:30px;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+/* --- OUR WORK (FULL SLIDER VERSION) --- */
+.work-titlewrap{
+  margin-bottom:20px;display:flex;flex-direction:column;align-items:center;
 }
-.offer-card{
-  background:#111;padding:28px;border-radius:12px;text-align:left;
-  opacity:0;transform:translateY(40px);transition:.9s cubic-bezier(.22,1,.36,1);
-}
-.offer-card.show{opacity:1;transform:translateY(0);}
-.offer-card h3{font-size:18px;font-weight:700;margin-bottom:6px;}
-.offer-sub{font-size:13px;opacity:.7;margin-bottom:12px;}
-.offer-tags{display:flex;flex-wrap:wrap;gap:8px;}
-.tag{padding:5px 10px;border-radius:999px;border:1px solid #333;font-size:11px;color:#bfbfbf;background:#151515;}
+.work-dot{width:24px;height:4px;border-radius:10px;background:#00c12d;margin-bottom:18px;}
 
-/* OUR WORK — 가로 스크롤 + 3개만 기본 표시 */
-.work-titlewrap{margin-bottom:20px;display:flex;flex-direction:column;align-items:center;}
-.work-dot{
-  width:24px;height:4px;border-radius:10px;background:#00c12d;margin-bottom:18px;
-}
-
-/* 슬라이더 전체 가운데 정렬 */
+/* Slider Wrapper */
 .work-slider-wrapper{
   width:100%;
   display:flex;
   justify-content:center;
+  position:relative;
+  margin-top:40px;
 }
 
-/* 가로 스크롤 컨테이너 */
+/* Slider Container */
 .work-slider-container{
-  width:100%;
-  max-width:1100px;   /* 중앙 정렬 기준이 되는 전체 폭 */
-  overflow-x:auto;
-  overflow-y:hidden;
-  padding-bottom:12px;
-  -webkit-overflow-scrolling:touch;
-  scrollbar-width:none;
+  max-width:1100px;
+  overflow:hidden;    /* 슬라이더 영역 밖은 숨김 */
+  position:relative;
 }
-.work-slider-container::-webkit-scrollbar{display:none;}
 
-/* 슬라이드 내부 */
+/* Slider (Inner Track) */
 .work-slider{
   display:flex;
   gap:26px;
-  padding-left:10px;
+  transition:transform .6s ease;
 }
 
+/* Slides */
 .work-slide{
-  width:32%;       /* 기본적으로 3개가 보이도록 */
+  width:32%;
   min-width:320px;
   height:220px;
   background:#222;
   border-radius:14px;
   flex-shrink:0;
+  transition:transform .4s ease, box-shadow .4s ease, opacity .9s cubic-bezier(.22,1,.36,1);
+  opacity:0;transform:translateY(40px);
+}
 
-  opacity:0;
-  transform:translateY(40px);
-  transition:.9s cubic-bezier(.22,1,.36,1);
+.work-slide.show{opacity:1;transform:translateY(0);}
+
+/* Hover 효과 */
+.work-slide:hover{
+  transform:scale(1.05);
+  box-shadow:0 10px 30px rgba(0,0,0,0.4);
 }
-.work-slide.show{
-  opacity:1;
-  transform:translateY(0);
+
+/* Arrow Buttons */
+.arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:48px;height:48px;
+  background:rgba(0,0,0,0.6);
+  border:1px solid #333;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:20px;
+  cursor:pointer;
+  z-index:20;
+  transition:.2s;
 }
+.arrow:hover{
+  background:#00c12d;
+  color:#000;
+}
+.arrow-left{left:-60px;}
+.arrow-right{right:-60px;}
 
 /* CONTACT */
 .contact-text{margin-top:20px;font-size:16px;opacity:.85;line-height:1.7;max-width:600px;margin:auto;}
-.contact-btnwrap{margin-top:40px;text-align:right;max-width:1100px;margin:auto;}
+.contact-btnwrap{text-align:right;max-width:1100px;margin:auto;margin-top:40px;}
 .contact-btn{
   padding:12px 32px;border:1px solid #ddd;border-radius:26px;background:#eee;
   color:#222;font-size:14px;font-weight:600;cursor:pointer;
@@ -133,19 +134,20 @@ footer{padding:60px;font-size:13px;opacity:.75;}
 
 .fade-up{
   opacity:0;transform:translateY(40px);
-  transition:.9s cubic-bezier(.22,1,.36,1);
+  transition:all .9s cubic-bezier(.22,1,.36,1);
 }
 .fade-up.show{opacity:1;transform:translateY(0);}
 
-@media(max-width:900px){
-  .work-slide{width:260px;height:200px;}
-}
 @media(max-width:768px){
-  .nav-header{padding:14px 20px;}
   section{padding:80px 24px;}
+  .nav-header{padding:14px 20px;}
   .hero{background:url('Main_mobile.png') center/cover no-repeat;}
   .hero h1{font-size:28px;}
   .btn-area{flex-direction:column;gap:16px;}
+
+  .arrow-left{left:10px;}
+  .arrow-right{right:10px;}
+  .work-slide{min-width:260px;height:200px;}
 }
 </style>
 </head>
@@ -241,7 +243,7 @@ footer{padding:60px;font-size:13px;opacity:.75;}
   </div>
 </section>
 
-<!-- OUR WORK (ONLY 3 FULLY VISIBLE, REST SCROLL) -->
+<!-- OUR WORK (SLIDER WITH ARROWS + AUTO PLAY + HOVER EFFECT) -->
 <section id="work">
   <div class="work-titlewrap fade-up">
     <div class="work-dot"></div>
@@ -249,8 +251,12 @@ footer{padding:60px;font-size:13px;opacity:.75;}
     <p>Discover more through the projects below.</p>
   </div>
 
-  <!-- 가로 슬라이더 전체를 가운데 정렬 -->
   <div class="work-slider-wrapper fade-up">
+
+    <!-- 좌측 화살표 -->
+    <div class="arrow arrow-left">‹</div>
+
+    <!-- 슬라이더 컨테이너 -->
     <div class="work-slider-container">
       <div class="work-slider">
 
@@ -262,6 +268,10 @@ footer{padding:60px;font-size:13px;opacity:.75;}
 
       </div>
     </div>
+
+    <!-- 우측 화살표 -->
+    <div class="arrow arrow-right">›</div>
+
   </div>
 </section>
 
@@ -270,7 +280,7 @@ footer{padding:60px;font-size:13px;opacity:.75;}
   <h2 class="fade-up">Contact Us</h2>
   <p class="contact-text fade-up">
     브랜드의 목표와 예산에 맞춘 최적의 마케팅 솔루션을 제안드립니다.<br>
-    편하게 문의 남겨주시면, 기획 담당자가 상세한 상담을 안내해드립니다.
+    편하게 문의를 남겨주시면 상세 상담을 안내드립니다.
   </p>
   <div class="contact-btnwrap fade-up">
     <button class="contact-btn">문의하기</button>
@@ -299,21 +309,53 @@ document.querySelectorAll('.nav-menu a').forEach(link=>{
   });
 });
 
-// Scroll Animation + Stagger
+// Fade-up + Stagger Animation
 const io = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); } });
 },{threshold:0.15});
 
-const animatedEls = Array.from(document.querySelectorAll('.fade-up, .offer-card, .work-slide'));
-
-animatedEls.forEach((el, idx)=>{
+document.querySelectorAll('.fade-up, .offer-card, .work-slide').forEach((el, idx)=>{
   el.style.transitionDelay = (idx * 0.08) + "s";
   io.observe(el);
 });
+
+// --- SLIDER FUNCTIONALITY ---
+const slider = document.querySelector(".work-slider");
+const slides = document.querySelectorAll(".work-slide");
+const btnLeft = document.querySelector(".arrow-left");
+const btnRight = document.querySelector(".arrow-right");
+
+let index = 0;
+
+// Move Slider
+function updateSlider(){
+  const slideWidth = slides[0].offsetWidth + 26;
+  slider.style.transform = `translateX(-${index * slideWidth}px)`;
+}
+
+// Right Arrow
+btnRight.addEventListener("click", ()=>{
+  index = (index + 1) % slides.length;
+  updateSlider();
+});
+
+// Left Arrow
+btnLeft.addEventListener("click", ()=>{
+  index = (index - 1 + slides.length) % slides.length;
+  updateSlider();
+});
+
+// Auto-play every 3 seconds
+setInterval(()=>{
+  index = (index + 1) % slides.length;
+  updateSlider();
+}, 3000);
+
 </script>
 
 </body>
 </html>
+
 
 
 
