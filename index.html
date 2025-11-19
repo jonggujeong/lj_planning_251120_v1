@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>LJ기획 – LJ Planning</title>
 
 <style>
-/* RESET */
+/* Reset */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Pretendard','Noto Sans KR',sans-serif;}
 body{background:#000;color:#fff;overflow-x:hidden;}
 img{max-width:100%;display:block;}
@@ -18,8 +18,7 @@ img{max-width:100%;display:block;}
   background:linear-gradient(to bottom,rgba(0,0,0,0.6),rgba(0,0,0,0));
 }
 .nav-inner{
-  max-width:1200px;margin:auto;
-  display:flex;justify-content:space-between;align-items:center;
+  max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;
 }
 .nav-logo{font-size:18px;font-weight:700;}
 .nav-logo span{color:#00c12d;font-weight:900;}
@@ -27,45 +26,34 @@ img{max-width:100%;display:block;}
 .nav-menu a{color:#fff;text-decoration:none;opacity:.85;font-size:14px;}
 .nav-menu a:hover{opacity:1;}
 
-.hamburger{
-  display:none;font-size:28px;cursor:pointer;color:#fff;
-}
-
-/* MOBILE MENU */
+/* MOBILE NAV */
+.hamburger{display:none;font-size:28px;color:#fff;cursor:pointer;}
 .mobile-menu{
   display:none;flex-direction:column;
-  position:fixed;top:0;right:0;height:100vh;width:70%;
+  position:fixed;top:0;right:0;width:70%;height:100vh;
   background:#111;padding:80px 30px;z-index:100;
 }
-.mobile-menu a{color:#fff;text-decoration:none;font-size:20px;margin-bottom:24px;}
-.mobile-menu .close{position:absolute;top:20px;right:20px;font-size:26px;cursor:pointer;}
+.mobile-menu a{color:#fff;font-size:20px;margin-bottom:24px;text-decoration:none;}
+.mobile-menu .close{position:absolute;top:20px;right:20px;font-size:28px;cursor:pointer;}
 
 /* HERO */
 .hero{
-  height:100vh;
-  background:url('Main_web.png') center/cover no-repeat;
-  display:flex;align-items:center;justify-content:center;
-  text-align:center;padding:20px;position:relative;
+  height:100vh;background:url('Main_web.png') center/cover no-repeat;
+  display:flex;align-items:center;justify-content:center;text-align:center;position:relative;
 }
-.hero-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(transparent,rgba(0,0,0,0.92));
-}
-.hero .inner{
-  position:relative;z-index:5;
-}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(transparent,rgba(0,0,0,.92));}
+.hero .inner{position:relative;z-index:10;}
 .hero h1{font-size:46px;font-weight:800;line-height:1.28;}
 .hero p{margin-top:12px;font-size:17px;opacity:.85;}
 .btn-area{margin-top:32px;display:flex;gap:20px;justify-content:center;}
-.btn{padding:12px 28px;border-radius:30px;cursor:pointer;font-size:15px;}
+.btn{padding:12px 28px;border-radius:30px;font-size:15px;cursor:pointer;}
 .btn-green{background:#00c12d;color:#000;font-weight:700;}
 .btn-line{border:1px solid #aaa;color:#ccc;background:transparent;}
 
 /* SECTIONS */
 section{padding:120px 60px;text-align:center;}
 section h2{font-size:40px;font-weight:800;margin-bottom:32px;}
-
-.purpose-text{max-width:700px;margin:auto;font-size:17px;opacity:.9;line-height:1.8;}
+.purpose-text{max-width:700px;margin:auto;font-size:17px;line-height:1.8;opacity:.9;}
 
 /* WHAT WE OFFER */
 .offer-titlewrap{
@@ -75,27 +63,27 @@ section h2{font-size:40px;font-weight:800;margin-bottom:32px;}
 .offer-dot{width:18px;height:18px;background:#00c12d;border-radius:50%;}
 .offer-grid{
   max-width:1100px;margin:auto;
-  display:grid;grid-template-columns:repeat(2,1fr);
-  gap:26px;
+  display:grid;grid-template-columns:repeat(2,1fr);gap:26px;
 }
 .offer-card{
-  background:#111;border-radius:14px;padding:36px 32px;text-align:left;
+  background:#111;padding:36px 32px;border-radius:14px;text-align:left;
+  opacity:0;transform:translateY(40px);transition:.9s cubic-bezier(.22,1,.36,1);
 }
+.offer-card.show{opacity:1;transform:translateY(0);}
 .offer-card h3{font-size:20px;margin-bottom:6px;}
 .offer-sub{font-size:14px;opacity:.75;margin-bottom:14px;}
-.offer-tags{display:flex;flex-wrap:wrap;gap:10px;}
+.offer-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;}
 .tag{
-  padding:6px 14px;border-radius:20px;
-  background:#151515;border:1px solid #333;
-  color:#bbb;font-size:12px;
+  border:1px solid #333;padding:6px 14px;border-radius:20px;
+  background:#151515;color:#bbb;font-size:12px;
 }
 
-/* OUR WORK (SLIDER) */
-.work-titlewrap{margin-bottom:20px;}
-.work-dot{width:26px;height:4px;background:#00c12d;margin:0 auto 18px;border-radius:10px;}
-
+/* OUR WORK */
+.work-dot{
+  width:26px;height:4px;background:#00c12d;border-radius:10px;margin:0 auto 18px;
+}
 .work-slider-wrapper{
-  width:100%;display:flex;justify-content:center;
+  width:100%;display:flex;justify-content:center;position:relative;margin-top:40px;
 }
 .work-slider-container{
   max-width:1100px;overflow:hidden;position:relative;
@@ -103,33 +91,38 @@ section h2{font-size:40px;font-weight:800;margin-bottom:32px;}
 .work-slider{
   display:flex;gap:24px;transition:transform .6s ease;
 }
+
 .work-slide{
   width:32%;
   min-width:330px;
-  height:260px;border-radius:14px;
-  background:#222;
+  height:260px;
+  background:#222;border-radius:14px;
   flex-shrink:0;
+  opacity:0;transform:translateY(40px);
+  transition:.9s cubic-bezier(.22,1,.36,1), transform .3s ease;
 }
+.work-slide.show{opacity:1;transform:translateY(0);}
+
 .work-slide:hover{
   transform:scale(1.05);
-  transition:.3s;
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
 }
 
 /* ARROWS */
 .arrow{
   position:absolute;top:50%;transform:translateY(-50%);
-  width:48px;height:48px;color:#fff;font-size:20px;
-  background:rgba(0,0,0,0.55);border-radius:50%;
+  width:48px;height:48px;background:rgba(0,0,0,0.55);
+  border:1px solid #333;border-radius:50%;
   display:flex;align-items:center;justify-content:center;
-  cursor:pointer;border:1px solid #333;z-index:20;
+  color:#fff;font-size:20px;cursor:pointer;z-index:20;
 }
+.arrow:hover{background:#00c12d;color:#000;}
 .arrow-left{left:-60px;}
 .arrow-right{right:-60px;}
-.arrow:hover{background:#00c12d;color:#000;}
 
 /* CONTACT */
 .contact-text{max-width:600px;margin:20px auto;font-size:16px;opacity:.85;line-height:1.7;}
-.contact-btnwrap{text-align:right;max-width:1100px;margin:auto;margin-top:40px;}
+.contact-btnwrap{max-width:1100px;margin:auto;margin-top:40px;text-align:right;}
 .contact-btn{
   padding:12px 32px;border-radius:28px;border:1px solid #eee;
   background:#eee;color:#222;font-size:14px;font-weight:700;
@@ -141,7 +134,7 @@ footer{padding:60px;text-align:center;font-size:13px;opacity:.75;}
 .footer-info{line-height:2;}
 .copy{margin-top:20px;color:#777;font-size:12px;}
 
-/* MOBILE --------------------------------------------- */
+/* MOBILE ---------------------------------------------------- */
 @media(max-width:900px){
 
   .nav-menu{display:none;}
@@ -153,18 +146,18 @@ footer{padding:60px;text-align:center;font-size:13px;opacity:.75;}
   /* WHAT WE OFFER */
   .offer-dot{display:none;}
   .offer-titlewrap{justify-content:center;}
-  .offer-grid{
-    grid-template-columns:1fr;
-    gap:18px;
-  }
+  .offer-titlewrap h2{font-size:32px;}
+  .offer-grid{grid-template-columns:1fr;gap:18px;}
   .offer-card{padding:26px 22px;}
 
-  /* OUR WORK 모바일: 1개 슬라이드(가운데 고정) */
+  /* OUR WORK */
   .arrow{display:none;}
+  
   .work-slide{
     min-width:80% !important;
     width:80% !important;
     margin:0 auto;
+    height:220px;
   }
   .work-slider{
     padding-left:0 !important;
@@ -182,18 +175,20 @@ footer{padding:60px;text-align:center;font-size:13px;opacity:.75;}
 <header class="nav-header">
   <div class="nav-inner">
     <div class="nav-logo"><span>LJ</span> PLANNING</div>
+
     <nav class="nav-menu">
       <a href="#purpose">About</a>
       <a href="#offer">Services</a>
       <a href="#work">Portfolio</a>
       <a href="#contact">Contact</a>
     </nav>
+
     <div class="hamburger" onclick="openMenu()">☰</div>
   </div>
 </header>
 
 <!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
+<div id="mobileMenu" class="mobile-menu">
   <div class="close" onclick="closeMenu()">✕</div>
   <a href="#purpose" onclick="closeMenu()">About</a>
   <a href="#offer" onclick="closeMenu()">Services</a>
@@ -279,6 +274,7 @@ footer{padding:60px;text-align:center;font-size:13px;opacity:.75;}
   </div>
 
   <div class="work-slider-wrapper">
+
     <div class="arrow arrow-left" id="arrowLeft">‹</div>
 
     <div class="work-slider-container">
@@ -292,6 +288,7 @@ footer{padding:60px;text-align:center;font-size:13px;opacity:.75;}
     </div>
 
     <div class="arrow arrow-right" id="arrowRight">›</div>
+
   </div>
 </section>
 
@@ -322,13 +319,13 @@ footer{padding:60px;text-align:center;font-size:13px;opacity:.75;}
 function openMenu(){document.getElementById("mobileMenu").style.display="flex";}
 function closeMenu(){document.getElementById("mobileMenu").style.display="none";}
 
-/* Smooth Scroll */
+/* SMOOTH SCROLL */
 document.querySelectorAll('.nav-menu a, .mobile-menu a').forEach(link=>{
   link.addEventListener('click', e=>{
     e.preventDefault();
-    const t=document.querySelector(link.getAttribute('href'));
+    const target=document.querySelector(link.getAttribute('href'));
     const offset=70;
-    const top=t.getBoundingClientRect().top+window.pageYOffset-offset;
+    const top=target.getBoundingClientRect().top+window.pageYOffset-offset;
     window.scrollTo({top,behavior:'smooth'});
   });
 });
@@ -343,15 +340,31 @@ function updateSlider(){
   slider.style.transform=`translateX(-${idx*w}px)`;
 }
 
-document.getElementById("arrowRight").onclick=()=>{
-  idx=(idx+1)%slides.length;updateSlider();
-};
-document.getElementById("arrowLeft").onclick=()=>{
-  idx=(idx-1+slides.length)%slides.length;updateSlider();
-};
+/* ARROW BUTTONS (PC only) */
+const arrowLeft=document.getElementById("arrowLeft");
+const arrowRight=document.getElementById("arrowRight");
 
-setInterval(()=>{idx=(idx+1)%slides.length;updateSlider();},1000);
+if(arrowRight){
+  arrowRight.onclick=()=>{
+    idx=(idx+1)%slides.length;
+    updateSlider();
+  };
+}
+if(arrowLeft){
+  arrowLeft.onclick=()=>{
+    idx=(idx-1+slides.length)%slides.length;
+    updateSlider();
+  };
+}
+
+/* AUTO SLIDE (1초) */
+setInterval(()=>{
+  idx=(idx+1)%slides.length;
+  updateSlider();
+},1000);
+
 </script>
 
 </body>
 </html>
+
