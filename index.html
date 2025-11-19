@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LJ기획 – LJ Planning</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Pretendard','Noto Sans KR',sans-serif;}
+body{background:#000;color:#fff;overflow-x:hidden;}
+img{max-width:100%;display:block;}
+nav{position:absolute;top:40px;right:60px;display:flex;gap:24px;font-size:14px;opacity:.85;}
+nav a{color:#fff;text-decoration:none;}
+nav a:hover{opacity:1}
+.hero{height:100vh;background:url('Main_web.png') center/cover no-repeat;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;position:relative;}
+.hero-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,0.9));}
+.hero .inner{position:relative;z-index:2;margin-top:-40px;}
+.hero h1{font-size:48px;font-weight:800;line-height:1.28;}
+.hero p{margin-top:12px;font-size:17px;opacity:.85;}
+.btn-area{margin-top:32px;display:flex;justify-content:center;gap:24px;}
+.btn{padding:12px 28px;border-radius:30px;cursor:pointer;font-size:15px;}
+.btn-green{background:#00c12d;color:#000;font-weight:600;}
+.btn-line{border:1px solid #999;color:#ccc;}
+section{padding:120px 60px;text-align:center;}
+section h2{font-size:40px;font-weight:800;margin-bottom:30px;}
+.purpose-text{margin:auto;max-width:680px;line-height:1.7;font-size:17px;opacity:.88;}
+.offer-titlewrap{display:flex;align-items:center;gap:10px;width:100%;max-width:1100px;margin:0 auto 32px;justify-content:flex-start;}
+.offer-dot{width:18px;height:18px;background:#00c12d;border-radius:50%;}
+.offer-grid{margin-top:30px;max-width:1100px;margin:auto;display:grid;gap:30px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));}
+.offer-card{background:#111;padding:28px;border-radius:12px;text-align:left;opacity:0;transform:translateY(40px);transition:all .9s cubic-bezier(.22,1,.36,1);}
+.offer-card.show{opacity:1;transform:translateY(0);}
+.work-titlewrap{margin-bottom:20px;display:flex;flex-direction:column;align-items:center;}
+.work-dot{width:24px;height:4px;border-radius:10px;background:#00c12d;margin-bottom:18px;}
+.work-grid{max-width:1050px;margin:50px auto 0;display:grid;gap:30px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));}
+.work-img{width:100%;height:260px;background:#222;border-radius:12px;opacity:0;transform:translateY(40px);transition:all .9s cubic-bezier(.22,1,.36,1);}
+.work-img.show{opacity:1;transform:translateY(0);}
+.contact-text{margin-top:20px;font-size:16px;opacity:.85;line-height:1.7;max-width:600px;margin:auto;}
+.contact-btnwrap{margin-top:40px;text-align:right;max-width:1100px;margin:auto;}
+.contact-btn{padding:12px 32px;border:1px solid #ddd;border-radius:26px;background:#eee;color:#222;font-size:14px;font-weight:600;cursor:pointer;}
+footer{padding:60px;font-size:13px;opacity:.75;}
+.footer-line{width:100%;height:1px;background:#333;margin:50px 0;}
+.footer-info{line-height:2;font-size:13px;}
+.copy{text-align:right;margin-top:20px;font-size:12px;color:#666;}
+.fade-up{opacity:0;transform:translateY(40px);transition:all .9s cubic-bezier(.22,1,.36,1);}
+.fade-up.show{opacity:1;transform:translateY(0);}
+@media(max-width:768px){
+  nav{right:24px;top:20px;font-size:13px;}
+  section{padding:80px 24px;}
+  .hero{background:url('Main_mobile.png') center/cover no-repeat;}
+  .hero h1{font-size:28px;}
+  .btn-area{flex-direction:column;gap:16px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#purpose">About</a>
+  <a href="#offer">Services</a>
+  <a href="#work">Portfolio</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<div class="hero fade-up">
+  <div class="inner">
+    <h1>We go beyond strategy<br>to create the future of your brand.</h1>
+    <p>기술과 창의성의 결합이 만드는 브랜드 성장</p>
+    <div class="btn-area">
+      <div class="btn btn-green">Learn More</div>
+      <div class="btn btn-line">서비스 살펴보기</div>
+    </div>
+  </div>
+  <div class="hero-overlay"></div>
+</div>
+
+<section id="purpose">
+  <h2 class="fade-up">Our Purpose</h2>
+  <p class="purpose-text fade-up">데이터와 인공지능을 기반으로 지속 가능한 마케팅 생태계를 구축하며 고객의 비전을 실질적 성과로 연결하는 스마트 마케팅 솔루션 기업을 목표로 합니다.</p>
+</section>
+
+<section id="offer">
+  <div class="offer-titlewrap fade-up">
+    <div class="offer-dot"></div><h2 style="margin:0;">What We Offer</h2>
+  </div>
+  <div class="offer-grid">
+    <div class="offer-card">Brand Strategy</div>
+    <div class="offer-card">Outdoor & Print</div>
+    <div class="offer-card">Web & Digital</div>
+    <div class="offer-card">AI Solutions</div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="work-titlewrap fade-up">
+    <div class="work-dot"></div>
+    <h2>Our Work</h2>
+    <p>Discover more through the projects below.</p>
+  </div>
+  <div class="work-grid">
+    <div class="work-img" style="background:url('portfolio_1.png') center/cover;"></div>
+    <div class="work-img" style="background:url('portfolio_2.png') center/cover;"></div>
+    <div class="work-img" style="background:url('portfolio_3.png') center/cover;"></div>
+    <div class="work-img" style="background:url('portfolio_4.png') center/cover;"></div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2 class="fade-up">Contact Us</h2>
+  <p class="contact-text fade-up">브랜드의 목표와 예산에 맞춘 최적의 마케팅 솔루션을 제안드립니다.<br>편하게 문의 남겨주시면, 기획 담당자가 상세한 상담을 안내해드립니다.</p>
+  <div class="contact-btnwrap fade-up"><button class="contact-btn">문의하기</button></div>
+</section>
+
+<footer>
+  <div class="footer-line"></div>
+  <div class="footer-info">
+    LJ 기획  |  대표자: 성용구  |  사업자등록번호: 000-00-00000<br>
+    T. 02-0000-0000  |  E-mail :
+  </div>
+  <div class="copy">© LJ PLANNING</div>
+</footer>
+
+<script>
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); } });
+},{threshold:0.15});
+document.querySelectorAll('.fade-up, .offer-card, .work-img').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
