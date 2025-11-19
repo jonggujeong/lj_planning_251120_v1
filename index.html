@@ -21,7 +21,9 @@ img{max-width:100%;display:block;}
   max-width:1200px;margin:auto;
   display:flex;justify-content:space-between;align-items:center;
 }
-.nav-logo{font-size:18px;font-weight:700;}
+.nav-logo{
+  font-size:18px;font-weight:700;
+}
 .nav-logo span{color:#00c12d;font-weight:900;}
 
 .nav-menu{
@@ -32,12 +34,17 @@ img{max-width:100%;display:block;}
 }
 .nav-menu a:hover{opacity:1;}
 
-.hamburger{display:none;font-size:28px;color:#fff;cursor:pointer;}
+.hamburger{
+  display:none;font-size:28px;color:#fff;cursor:pointer;
+}
 
 /* MOBILE MENU */
 .mobile-menu{
-  display:none;flex-direction:column;
-  position:fixed;top:0;right:0;width:70%;height:100vh;
+  display:none;
+  flex-direction:column;
+  position:fixed;
+  top:0;right:0;
+  width:70%;height:100vh;
   background:#111;padding:80px 30px;
   z-index:9999;opacity:0;transition:.3s;
 }
@@ -47,13 +54,16 @@ img{max-width:100%;display:block;}
 .mobile-menu a{
   color:#fff;font-size:20px;margin-bottom:24px;text-decoration:none;
 }
-.close-menu{position:absolute;top:20px;right:20px;font-size:28px;color:#fff;cursor:pointer;}
+.close-menu{
+  position:absolute;top:20px;right:20px;font-size:28px;color:#fff;cursor:pointer;
+}
 
 /* HERO */
 .hero{
   height:100vh;
   background:url('Main_web.png') center/cover no-repeat;
-  display:flex;align-items:center;justify-content:center;text-align:center;position:relative;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;position:relative;
 }
 .hero-overlay{
   position:absolute;inset:0;background:linear-gradient(transparent,rgba(0,0,0,.92));
@@ -62,25 +72,25 @@ img{max-width:100%;display:block;}
 .hero h1{font-size:46px;font-weight:800;line-height:1.28;}
 .hero p{margin-top:12px;font-size:17px;opacity:.85;}
 .btn-area{margin-top:32px;display:flex;gap:20px;justify-content:center;}
-.btn{padding:12px 28px;border-radius:30px;font-size:15px;cursor:pointer;}
+.btn{
+  padding:12px 28px;border-radius:30px;font-size:15px;cursor:pointer;
+  display:inline-block;
+}
 .btn-green{background:#00c12d;color:#000;font-weight:700;}
 .btn-line{border:1px solid #aaa;color:#ccc;background:transparent;}
 
 /* SECTION COMMON */
 section{padding:120px 60px;text-align:center;}
 section h2{font-size:40px;font-weight:800;margin-bottom:32px;}
-.purpose-text{max-width:700px;margin:auto;font-size:17px;line-height:1.8;opacity:.9;}
-
-/* WHAT WE OFFER — 수정 적용(가운데 정렬, 점 제거) */
-.offer-titlewrap{
-  text-align:center;
-  margin-bottom:32px;
+.purpose-text{
+  max-width:700px;margin:auto;font-size:17px;line-height:1.8;opacity:.9;
 }
+
+/* WHAT WE OFFER — 제목 가운데 + 점 제거 */
+.offer-titlewrap{text-align:center;margin-bottom:32px;}
 .offer-titlewrap h2{
-  font-size:40px;
-  font-weight:800;
+  font-size:40px;font-weight:800;
 }
-
 .offer-grid{
   max-width:1100px;margin:auto;
   display:grid;grid-template-columns:repeat(2,1fr);gap:26px;
@@ -91,10 +101,15 @@ section h2{font-size:40px;font-weight:800;margin-bottom:32px;}
 .offer-card h3{font-size:20px;margin-bottom:6px;}
 .offer-sub{font-size:14px;margin-bottom:14px;opacity:.75;}
 .offer-tags{display:flex;flex-wrap:wrap;gap:10px;}
-.tag{padding:6px 14px;border-radius:20px;border:1px solid #333;background:#151515;color:#bbb;font-size:12px;}
+.tag{
+  padding:6px 14px;border-radius:20px;font-size:12px;color:#bbb;
+  background:#151515;border:1px solid #333;
+}
 
-/* OUR WORK (PC VERSION) */
-.work-titlewrap{text-align:center;margin-bottom:20px;}
+/* OUR WORK (PC version slider) */
+.work-titlewrap{
+  text-align:center;margin-bottom:20px;
+}
 .work-dot{
   width:26px;height:4px;background:#00c12d;border-radius:10px;margin:0 auto 18px;
 }
@@ -111,8 +126,11 @@ section h2{font-size:40px;font-weight:800;margin-bottom:32px;}
 }
 
 .work-slide{
-  width:32%;min-width:330px;height:260px;
-  background:#222;border-radius:14px;flex-shrink:0;
+  width:32%;
+  min-width:330px;
+  height:260px;
+  background:#222;border-radius:14px;
+  flex-shrink:0;
   transition:.3s ease;
 }
 .work-slide:hover{
@@ -120,12 +138,11 @@ section h2{font-size:40px;font-weight:800;margin-bottom:32px;}
   box-shadow:0 10px 30px rgba(0,0,0,.4);
 }
 
-/* PC Arrows */
+/* ARROWS */
 .arrow{
   position:absolute;top:50%;transform:translateY(-50%);
-  width:48px;height:48px;border-radius:50%;
-  background:rgba(0,0,0,.55);
-  border:1px solid #333;cursor:pointer;
+  width:48px;height:48px;background:rgba(0,0,0,.55);
+  border-radius:50%;border:1px solid #333;cursor:pointer;
   display:flex;align-items:center;justify-content:center;
   color:#fff;font-size:20px;z-index:20;
 }
@@ -133,35 +150,49 @@ section h2{font-size:40px;font-weight:800;margin-bottom:32px;}
 .arrow-right{right:-60px;}
 .arrow:hover{background:#00c12d;color:#000;}
 
-/* MOBILE ------------------------------------------------------*/
+/* CONTACT */
+.contact-text{
+  max-width:600px;margin:20px auto;font-size:16px;opacity:.85;line-height:1.7;
+}
+.contact-btnwrap{
+  max-width:1100px;margin:auto;margin-top:40px;text-align:center;
+}
+.contact-btn{
+  display:inline-block !important;
+  padding:12px 32px;border-radius:28px;border:1px solid #eee;
+  background:#eee;color:#222;font-weight:700;font-size:14px;
+}
+
+/* FOOTER */
+footer{text-align:center;padding:60px;font-size:13px;opacity:.75;}
+.footer-line{width:100%;height:1px;background:#333;margin:50px 0;}
+.footer-info{line-height:2;}
+.copy{margin-top:20px;font-size:12px;color:#777;}
+
+/* ---------------- MOBILE ----------------*/
 @media(max-width:900px){
 
   .nav-menu{display:none;}
   .hamburger{display:block;}
 
-  .hero{
-    background:url('Main_mobile.png') center/cover no-repeat;
-  }
+  .hero{background:url('Main_mobile.png') center/cover no-repeat;}
   .hero h1{font-size:28px;}
 
-  /* WHAT WE OFFER */
-  .offer-titlewrap{text-align:center;}
+  /* WHAT WE OFFER 모바일 */
   .offer-grid{
     grid-template-columns:1fr;
     display:flex;flex-direction:column;align-items:center;
     gap:18px;
   }
-  .offer-card{
-    width:95%;padding:26px 22px;
-  }
+  .offer-card{width:95%;padding:26px 22px;}
 
-  /* OUR WORK — 세로 나열 */
+  /* OUR WORK 모바일 = 세로 전체 이미지 */
   .arrow{display:none;}
-  .work-slider{display:block;transform:none !important;}
+  .work-slider{display:block !important;transform:none !important;}
   .work-slide{
     width:100% !important;
     min-width:100% !important;
-    height:260px;
+    height:270px;
     margin-bottom:20px;
     border-radius:12px;
   }
@@ -177,14 +208,12 @@ section h2{font-size:40px;font-weight:800;margin-bottom:32px;}
 <header class="nav-header">
   <div class="nav-inner">
     <div class="nav-logo"><span>LJ</span> PLANNING</div>
-
     <nav class="nav-menu">
       <a href="#purpose">About</a>
       <a href="#offer">Services</a>
       <a href="#work">Portfolio</a>
       <a href="#contact">Contact</a>
     </nav>
-
     <div class="hamburger" onclick="openMenu()">☰</div>
   </div>
 </header>
@@ -219,7 +248,7 @@ section h2{font-size:40px;font-weight:800;margin-bottom:32px;}
   </p>
 </section>
 
-<!-- WHAT WE OFFER (제목 가운데 정렬 + 점 제거) -->
+<!-- WHAT WE OFFER (제목 중앙) -->
 <section id="offer">
   <div class="offer-titlewrap">
     <h2>What We Offer</h2>
@@ -230,8 +259,10 @@ section h2{font-size:40px;font-weight:800;margin-bottom:32px;}
       <h3>Brand Strategy</h3>
       <p class="offer-sub">브랜드 전략</p>
       <div class="offer-tags">
-        <span class="tag">#MarketingStrategy</span><span class="tag">#Branding</span>
-        <span class="tag">#IMC</span><span class="tag">#BrandIdentity</span>
+        <span class="tag">#MarketingStrategy</span>
+        <span class="tag">#Branding</span>
+        <span class="tag">#IMC</span>
+        <span class="tag">#BrandIdentity</span>
       </div>
     </div>
 
@@ -239,8 +270,10 @@ section h2{font-size:40px;font-weight:800;margin-bottom:32px;}
       <h3>Outdoor & Print</h3>
       <p class="offer-sub">오프라인 광고 · 인쇄물</p>
       <div class="offer-tags">
-        <span class="tag">#Signage</span><span class="tag">#UrbanMedia</span>
-        <span class="tag">#OOH</span><span class="tag">#PosterAds</span>
+        <span class="tag">#Signage</span>
+        <span class="tag">#UrbanMedia</span>
+        <span class="tag">#OOH</span>
+        <span class="tag">#PosterAds</span>
         <span class="tag">#TransitAds</span>
       </div>
     </div>
@@ -249,8 +282,10 @@ section h2{font-size:40px;font-weight:800;margin-bottom:32px;}
       <h3>Web & Digital</h3>
       <p class="offer-sub">디지털 콘텐츠 & 웹 제작</p>
       <div class="offer-tags">
-        <span class="tag">#UIUX</span><span class="tag">#WebDesign</span>
-        <span class="tag">#ContentMarketing</span><span class="tag">#SocialMedia</span>
+        <span class="tag">#UIUX</span>
+        <span class="tag">#WebDesign</span>
+        <span class="tag">#ContentMarketing</span>
+        <span class="tag">#SocialMedia</span>
       </div>
     </div>
 
@@ -258,24 +293,23 @@ section h2{font-size:40px;font-weight:800;margin-bottom:32px;}
       <h3>AI Solutions</h3>
       <p class="offer-sub">AI 기반 마케팅 솔루션</p>
       <div class="offer-tags">
-        <span class="tag">#DataDriven</span><span class="tag">#AIMarketing</span>
+        <span class="tag">#DataDriven</span>
+        <span class="tag">#AIMarketing</span>
         <span class="tag">#Automation</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- OUR WORK (PC = 슬라이더 / MOBILE = 세로 전체 보여주기) -->
+<!-- OUR WORK -->
 <section id="work">
   <div class="work-titlewrap">
     <div class="work-dot"></div>
     <h2>Our Work</h2>
-
     <p>Discover more through the projects below.</p>
   </div>
 
   <div class="work-slider-wrapper">
-
     <div class="arrow arrow-left" id="arrowLeft">‹</div>
 
     <div class="work-slider-container">
@@ -289,7 +323,6 @@ section h2{font-size:40px;font-weight:800;margin-bottom:32px;}
     </div>
 
     <div class="arrow arrow-right" id="arrowRight">›</div>
-
   </div>
 </section>
 
@@ -326,7 +359,7 @@ function closeMenu(){
 
 /* SMOOTH SCROLL */
 document.querySelectorAll('.nav-menu a, .mobile-menu a').forEach(link=>{
-  link.addEventListener("click",e=>{
+  link.addEventListener("click",(e)=>{
     e.preventDefault();
     const t=document.querySelector(link.getAttribute("href"));
     const offset=70;
@@ -336,7 +369,7 @@ document.querySelectorAll('.nav-menu a, .mobile-menu a').forEach(link=>{
   });
 });
 
-/* SLIDER (PC) */
+/* PC 슬라이더 */
 const slider=document.getElementById("workSlider");
 const slides=document.querySelectorAll(".work-slide");
 let idx=0;
@@ -349,8 +382,12 @@ function updateSlider(){
 const arrowL=document.getElementById("arrowLeft");
 const arrowR=document.getElementById("arrowRight");
 
-if(arrowR){arrowR.onclick=()=>{idx=(idx+1)%slides.length;updateSlider();}}
-if(arrowL){arrowL.onclick=()=>{idx=(idx-1+slides.length)%slides.length;updateSlider();}}
+if(arrowR){
+  arrowR.onclick=()=>{idx=(idx+1)%slides.length;updateSlider();}
+}
+if(arrowL){
+  arrowL.onclick=()=>{idx=(idx-1+slides.length)%slides.length;updateSlider();}
+}
 
 /* AUTO SLIDE */
 setInterval(()=>{
@@ -361,4 +398,5 @@ setInterval(()=>{
 
 </body>
 </html>
+
 
