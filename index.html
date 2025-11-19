@@ -94,14 +94,14 @@ section h2{font-size:40px;font-weight:800;margin-bottom:32px;}
     background:#00c12d;margin:0 auto 18px;
 }
 
-/* ---------------- PC SLIDER 구조 수정됨 ---------------- */
+/* ===================== PC 슬라이더 – 완전한 중앙정렬 ==================== */
 .pc-slider-wrapper{
     width:100%;
     display:flex;
     justify-content:center;
     align-items:center;
     position:relative;
-    margin-top:20px;
+    margin-top:40px;
 }
 
 .pc-slider-container{
@@ -110,6 +110,7 @@ section h2{font-size:40px;font-weight:800;margin-bottom:32px;}
     overflow:hidden;
     display:flex;
     justify-content:center;
+    position:relative;
 }
 
 .pc-slider-track{
@@ -117,11 +118,12 @@ section h2{font-size:40px;font-weight:800;margin-bottom:32px;}
     gap:24px;
     align-items:center;
     transition:transform .6s ease;
+    will-change:transform;
 }
 
 .pc-slide{
-    width:330px;
-    height:260px;
+    width:360px;
+    height:280px;
     background:#222;
     background-size:cover;
     background-position:center;
@@ -375,33 +377,39 @@ document.querySelectorAll('.nav-menu a, .mobile-menu a').forEach(link=>{
     });
 });
 
-/* PC SLIDER */
-const track=document.getElementById("pcSlider");
-const slides=document.querySelectorAll(".pc-slide");
-let idx=0;
+/* ===================== PC SLIDER 완전 중앙정렬 ===================== */
+const track = document.getElementById("pcSlider");
+const slides = document.querySelectorAll(".pc-slide");
+let index = 0;
 
-function updateSlider(){
-    const w=slides[0].offsetWidth + 24;
-    track.style.transform=`translateX(calc(50% - ${(w*slides.length)/2}px - ${idx*w}px))`;
+function updateSlider() {
+    const slideWidth = slides[0].offsetWidth + 24; 
+    const totalWidth = slideWidth * slides.length;
+    const centerOffset = (totalWidth / 2) - (slideWidth / 2);
+
+    const moveX = centerOffset - (index * slideWidth);
+
+    track.style.transform = `translateX(${moveX}px)`;
 }
 
-document.getElementById("arrowRight").onclick=()=>{
-    idx=(idx+1)%slides.length;
+document.getElementById("arrowRight").onclick = () => {
+    index = (index + 1) % slides.length;
     updateSlider();
 };
-document.getElementById("arrowLeft").onclick=()=>{
-    idx=(idx-1+slides.length)%slides.length;
+document.getElementById("arrowLeft").onclick = () => {
+    index = (index - 1 + slides.length) % slides.length;
     updateSlider();
 };
 
-setInterval(()=>{
+window.addEventListener("resize", updateSlider);
+window.onload = updateSlider;
+
+setInterval(() => {
     if(window.innerWidth > 900){
-        idx=(idx+1)%slides.length;
+        index = (index + 1) % slides.length;
         updateSlider();
     }
-},1500);
-
-window.onload = updateSlider;
+}, 2000);
 </script>
 
 </body>
