@@ -6,142 +6,180 @@
 <title>LJ기획 – LJ Planning</title>
 
 <style>
+/* GLOBAL RESET */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Pretendard','Noto Sans KR',sans-serif;}
 body{background:#000;color:#fff;overflow-x:hidden;}
-img{max-width:100%;display:block;}
 
 /* HEADER */
 .nav-header{
   position:fixed;top:0;left:0;width:100%;z-index:50;
   padding:18px 60px;
-  background:linear-gradient(to bottom,rgba(0,0,0,0.7),rgba(0,0,0,0));
+  background:linear-gradient(to bottom,rgba(0,0,0,0.6),rgba(0,0,0,0));
 }
 .nav-inner{
-  max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;
+  max-width:1200px;margin:auto;
+  display:flex;justify-content:space-between;align-items:center;
 }
 .nav-logo{font-size:18px;font-weight:700;letter-spacing:0.08em;}
 .nav-logo span{color:#00c12d;font-weight:900;}
-.nav-menu{display:flex;gap:24px;font-size:14px;}
+.nav-menu{display:flex;gap:26px;font-size:14px;}
 .nav-menu a{color:#fff;text-decoration:none;opacity:.85;transition:.2s;}
-.nav-menu a:hover{opacity:1;color:#fff;}
+.nav-menu a:hover{opacity:1;}
 
 /* HERO */
 .hero{
-  height:100vh;background:url('Main_web.png') center/cover no-repeat;
-  display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;position:relative;
+  height:100vh;
+  background:url('Main_web.png') center/cover no-repeat;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:20px;position:relative;
 }
 .hero-overlay{
-  position:absolute;bottom:0;left:0;right:0;height:40%;
-  background:linear-gradient(transparent,rgba(0,0,0,0.9));
+  position:absolute;inset:0;
+  background:linear-gradient(transparent,rgba(0,0,0,0.92));
 }
-.hero .inner{position:relative;z-index:2;margin-top:-40px;}
-.hero h1{font-size:48px;font-weight:800;line-height:1.28;}
+.hero .inner{
+  position:relative;z-index:5;margin-top:-40px;
+  max-width:700px;
+}
+.hero h1{font-size:46px;font-weight:800;line-height:1.28;}
 .hero p{margin-top:12px;font-size:17px;opacity:.85;}
-.btn-area{margin-top:32px;display:flex;justify-content:center;gap:24px;}
-.btn{padding:12px 28px;border-radius:30px;cursor:pointer;font-size:15px;}
-.btn-green{background:#00c12d;color:#000;font-weight:600;}
-.btn-line{border:1px solid #999;color:#ccc;}
+.btn-area{margin-top:32px;display:flex;gap:20px;justify-content:center;}
+.btn{
+  padding:12px 28px;border-radius:30px;cursor:pointer;font-size:15px;
+}
+.btn-green{background:#00c12d;color:#000;font-weight:700;}
+.btn-line{border:1px solid #aaa;color:#ccc;background:transparent;}
 
-/* COMMON SECTION */
+/* SECTION DEFAULT */
 section{padding:120px 60px;text-align:center;}
 section h2{font-size:40px;font-weight:800;margin-bottom:30px;}
+
 .purpose-text{
-  margin:auto;max-width:680px;line-height:1.7;font-size:17px;opacity:.88;
+  max-width:700px;margin:auto;
+  line-height:1.8;font-size:17px;opacity:.9;
 }
 
-/* WHAT WE OFFER (복구본) */
+/* --- WHAT WE OFFER (시안 1:1 반영, 큰 카드) --- */
 .offer-titlewrap{
   display:flex;align-items:center;gap:10px;
-  width:100%;max-width:1100px;margin:0 auto 32px;
-  justify-content:flex-start;
+  max-width:1100px;margin:0 auto 36px;
 }
-.offer-dot{
-  width:18px;height:18px;background:#00c12d;border-radius:50%;
-}
+.offer-dot{width:18px;height:18px;background:#00c12d;border-radius:50%;}
 .offer-grid{
-  margin-top:30px;max-width:1100px;margin:auto;
-  display:grid;gap:30px;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  max-width:1100px;margin:auto;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:26px;
 }
 .offer-card{
-  background:#111;padding:28px;border-radius:12px;text-align:left;
-  opacity:0;transform:translateY(40px);
-  transition:all .9s cubic-bezier(.22,1,.36,1);
+  background:#111;border-radius:14px;
+  padding:36px 32px;
+  text-align:left;
+  opacity:0;
+  transform:translateY(40px);
+  transition:.9s cubic-bezier(.22,1,.36,1);
 }
-.offer-card.show{opacity:1;transform:translateY(0);}
-.offer-card h3{
-  font-size:18px;font-weight:700;margin-bottom:6px;
+.offer-card.show{
+  opacity:1;transform:translateY(0);
 }
-.offer-sub{font-size:13px;opacity:.7;margin-bottom:12px;}
-.offer-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.offer-card h3{font-size:20px;font-weight:700;margin-bottom:8px;}
+.offer-sub{font-size:14px;opacity:.75;margin-bottom:14px;}
+.offer-tags{
+  display:flex;flex-wrap:wrap;gap:10px;
+  margin-top:14px;
+}
 .tag{
-  padding:5px 10px;border-radius:999px;border:1px solid #333;
-  font-size:11px;color:#bfbfbf;background:#151515;
+  border:1px solid #333;border-radius:20px;
+  padding:6px 14px;font-size:12px;color:#bbb;
+  background:#151515;
 }
 
-/* OUR WORK - SLIDER */
+/* --- OUR WORK (3개 보임 + 가로 슬라이더 + 자동 1초 + 큰 박스) --- */
 .work-titlewrap{
-  margin-bottom:20px;display:flex;flex-direction:column;align-items:center;
+  margin-bottom:20px;
+  display:flex;flex-direction:column;align-items:center;
 }
-.work-dot{width:24px;height:4px;border-radius:10px;background:#00c12d;margin-bottom:18px;}
+.work-dot{
+  width:26px;height:4px;background:#00c12d;border-radius:10px;margin-bottom:14px;
+}
 
+/* 슬라이더 전체 가운데 정렬 */
 .work-slider-wrapper{
   width:100%;display:flex;justify-content:center;position:relative;margin-top:40px;
 }
+
+/* 컨테이너 */
 .work-slider-container{
-  max-width:1100px;overflow:hidden;position:relative;
+  max-width:1100px;
+  overflow:hidden;
+  position:relative;
 }
+
+/* 내부 트랙 */
 .work-slider{
-  display:flex;gap:26px;transition:transform .6s ease;
+  display:flex;
+  gap:26px; /* 중간 간격(요청값 반영) */
+  transition:transform .7s ease;
 }
+
+/* 카드 */
 .work-slide{
   width:32%;
-  min-width:320px;
-  height:220px;
-  background:#222;
+  min-width:330px;    /* 큰 카드 */
+  height:270px;       /* 시안 비율대로 더 큼 */
   border-radius:14px;
+  background:#222;
   flex-shrink:0;
+
   opacity:0;transform:translateY(40px);
-  transition:all .9s cubic-bezier(.22,1,.36,1), transform .4s ease;
+  transition:.9s cubic-bezier(.22,1,.36,1), transform .4s ease;
 }
 .work-slide.show{opacity:1;transform:translateY(0);}
+
+/* Hover 확대 */
 .work-slide:hover{
   transform:scale(1.05);
   box-shadow:0 10px 30px rgba(0,0,0,0.4);
 }
 
-/* ARROWS */
+/* 화살표 */
 .arrow{
   position:absolute;top:50%;transform:translateY(-50%);
-  width:48px;height:48px;background:rgba(0,0,0,0.6);
+  width:48px;height:48px;background:rgba(0,0,0,0.55);
   border:1px solid #333;border-radius:50%;
   display:flex;align-items:center;justify-content:center;
-  color:#fff;font-size:20px;
-  cursor:pointer;z-index:20;transition:.2s;
+  color:#fff;font-size:20px;cursor:pointer;z-index:20;
+  transition:.2s;
 }
 .arrow:hover{background:#00c12d;color:#000;}
 .arrow-left{left:-60px;}
 .arrow-right{right:-60px;}
 
 /* CONTACT */
-.contact-text{margin-top:20px;font-size:16px;opacity:.85;line-height:1.7;max-width:600px;margin:auto;}
-.contact-btnwrap{margin-top:40px;text-align:right;max-width:1100px;margin:auto;}
+.contact-text{max-width:600px;margin:20px auto;font-size:16px;opacity:.85;line-height:1.7;}
+.contact-btnwrap{text-align:right;max-width:1100px;margin:auto;margin-top:40px;}
 .contact-btn{
-  padding:12px 32px;border:1px solid #ddd;border-radius:26px;background:#eee;
-  color:#222;font-size:14px;font-weight:600;cursor:pointer;
+  padding:12px 32px;border-radius:26px;border:1px solid #ddd;
+  background:#eee;color:#222;font-size:14px;font-weight:700;cursor:pointer;
 }
 
 /* FOOTER */
-footer{padding:60px;font-size:13px;opacity:.75;}
+footer{padding:60px;text-align:center;font-size:13px;opacity:.7;}
 .footer-line{width:100%;height:1px;background:#333;margin:50px 0;}
 .footer-info{line-height:2;font-size:13px;}
-.copy{text-align:right;margin-top:20px;font-size:12px;color:#666;}
+.copy{margin-top:20px;font-size:12px;color:#777;}
 
 .fade-up{
   opacity:0;transform:translateY(40px);
-  transition:all .9s cubic-bezier(.22,1,.36,1);
+  transition:.9s cubic-bezier(.22,1,.36,1);
 }
 .fade-up.show{opacity:1;transform:translateY(0);}
+
+@media(max-width:900px){
+  .work-slide{min-width:260px;height:220px;width:260px;}
+  .arrow-left{left:10px;}
+  .arrow-right{right:10px;}
+}
 
 @media(max-width:768px){
   section{padding:80px 24px;}
@@ -149,10 +187,6 @@ footer{padding:60px;font-size:13px;opacity:.75;}
   .hero{background:url('Main_mobile.png') center/cover no-repeat;}
   .hero h1{font-size:28px;}
   .btn-area{flex-direction:column;gap:16px;}
-
-  .arrow-left{left:10px;}
-  .arrow-right{right:10px;}
-  .work-slide{min-width:260px;height:200px;width:260px;}
 }
 </style>
 </head>
@@ -194,7 +228,7 @@ footer{padding:60px;font-size:13px;opacity:.75;}
   </p>
 </section>
 
-<!-- WHAT WE OFFER (복원) -->
+<!-- WHAT WE OFFER -->
 <section id="offer">
   <div class="offer-titlewrap fade-up">
     <div class="offer-dot"></div>
@@ -212,6 +246,7 @@ footer{padding:60px;font-size:13px;opacity:.75;}
         <span class="tag">#BrandIdentity</span>
       </div>
     </div>
+
     <div class="offer-card">
       <h3>Outdoor & Print</h3>
       <p class="offer-sub">오프라인 광고 · 인쇄물</p>
@@ -223,6 +258,7 @@ footer{padding:60px;font-size:13px;opacity:.75;}
         <span class="tag">#TransitAds</span>
       </div>
     </div>
+
     <div class="offer-card">
       <h3>Web & Digital</h3>
       <p class="offer-sub">디지털 콘텐츠 & 웹 제작</p>
@@ -233,6 +269,7 @@ footer{padding:60px;font-size:13px;opacity:.75;}
         <span class="tag">#SocialMedia</span>
       </div>
     </div>
+
     <div class="offer-card">
       <h3>AI Solutions</h3>
       <p class="offer-sub">AI 기반 마케팅 솔루션</p>
@@ -245,7 +282,7 @@ footer{padding:60px;font-size:13px;opacity:.75;}
   </div>
 </section>
 
-<!-- OUR WORK SLIDER -->
+<!-- OUR WORK (3 보임 + 슬라이드) -->
 <section id="work">
   <div class="work-titlewrap fade-up">
     <div class="work-dot"></div>
@@ -255,18 +292,23 @@ footer{padding:60px;font-size:13px;opacity:.75;}
 
   <div class="work-slider-wrapper fade-up">
 
+    <!-- LEFT ARROW -->
     <div class="arrow arrow-left">‹</div>
 
+    <!-- SLIDER -->
     <div class="work-slider-container">
       <div class="work-slider">
+
         <div class="work-slide" style="background:url('portfolio_1.png') center/cover;"></div>
         <div class="work-slide" style="background:url('portfolio_2.png') center/cover;"></div>
         <div class="work-slide" style="background:url('portfolio_3.png') center/cover;"></div>
         <div class="work-slide" style="background:url('portfolio_4.png') center/cover;"></div>
         <div class="work-slide" style="background:url('portfolio_5.png') center/cover;"></div>
+
       </div>
     </div>
 
+    <!-- RIGHT ARROW -->
     <div class="arrow arrow-right">›</div>
 
   </div>
@@ -277,7 +319,7 @@ footer{padding:60px;font-size:13px;opacity:.75;}
   <h2 class="fade-up">Contact Us</h2>
   <p class="contact-text fade-up">
     브랜드의 목표와 예산에 맞춘 최적의 마케팅 솔루션을 제안드립니다.<br>
-    문의를 남겨주시면 상세 상담을 안내드립니다.
+    편하게 문의를 남겨주시면 상세 상담을 안내드립니다.
   </p>
   <div class="contact-btnwrap fade-up">
     <button class="contact-btn">문의하기</button>
@@ -297,59 +339,52 @@ footer{padding:60px;font-size:13px;opacity:.75;}
 <script>
 // Smooth Scroll
 document.querySelectorAll('.nav-menu a').forEach(link=>{
-  link.addEventListener('click', (e)=>{
+  link.addEventListener('click',(e)=>{
     e.preventDefault();
-    const target = document.querySelector(link.getAttribute('href'));
-    const offset = 80;
-    const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-    window.scrollTo({top, behavior:'smooth'});
+    const t=document.querySelector(link.getAttribute('href'));
+    const offset=80;
+    const top=t.getBoundingClientRect().top+window.pageYOffset-offset;
+    window.scrollTo({top,behavior:'smooth'});
   });
 });
 
-// Fade-up + Stagger Animation
-const io = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); } });
+// Fade-up + Stagger
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show');});
 },{threshold:0.15});
-document.querySelectorAll('.fade-up, .offer-card, .work-slide').forEach((el, idx)=>{
-  el.style.transitionDelay = (idx * 0.08) + "s";
+document.querySelectorAll('.fade-up,.offer-card,.work-slide').forEach((el,i)=>{
+  el.style.transitionDelay=(i*0.08)+'s';
   io.observe(el);
 });
 
-// SLIDER LOGIC (1초 자동 슬라이드)
-const slider = document.querySelector(".work-slider");
-const slides = document.querySelectorAll(".work-slide");
-const btnLeft = document.querySelector(".arrow-left");
-const btnRight = document.querySelector(".arrow-right");
-
-let index = 0;
+// SLIDER LOGIC
+const slider=document.querySelector(".work-slider");
+const slides=document.querySelectorAll(".work-slide");
+const btnLeft=document.querySelector(".arrow-left");
+const btnRight=document.querySelector(".arrow-right");
+let index=0;
 
 function updateSlider(){
-  const slideWidth = slides[0].offsetWidth + 26;
-  slider.style.transform = `translateX(-${index * slideWidth}px)`;
+  const slideWidth=slides[0].offsetWidth+26;
+  slider.style.transform=`translateX(-${index*slideWidth}px)`;
 }
 
-btnRight.addEventListener("click", ()=>{
-  index = (index + 1) % slides.length;
+btnRight.addEventListener("click",()=>{
+  index=(index+1)%slides.length;
   updateSlider();
 });
 
-btnLeft.addEventListener("click", ()=>{
-  index = (index - 1 + slides.length) % slides.length;
+btnLeft.addEventListener("click",()=>{
+  index=(index-1+slides.length)%slides.length;
   updateSlider();
 });
 
 // Auto Slide (1초)
 setInterval(()=>{
-  index = (index + 1) % slides.length;
+  index=(index+1)%slides.length;
   updateSlider();
-}, 1000);
-
+},1000);
 </script>
 
 </body>
 </html>
-
-
-
-
-
