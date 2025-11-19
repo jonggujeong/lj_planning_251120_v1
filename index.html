@@ -6,15 +6,16 @@
 <title>LJ기획 – LJ Planning</title>
 
 <style>
-/* GLOBAL RESET */
+/* RESET */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Pretendard','Noto Sans KR',sans-serif;}
 body{background:#000;color:#fff;overflow-x:hidden;}
+img{max-width:100%;display:block;}
 
 /* HEADER */
 .nav-header{
   position:fixed;top:0;left:0;width:100%;z-index:50;
   padding:18px 60px;
-  background:linear-gradient(to bottom,rgba(0,0,0,0.6),rgba(0,0,0,0));
+  background:linear-gradient(to bottom,rgba(0,0,0,0.7),rgba(0,0,0,0));
 }
 .nav-inner{
   max-width:1200px;margin:auto;
@@ -28,8 +29,7 @@ body{background:#000;color:#fff;overflow-x:hidden;}
 
 /* HERO */
 .hero{
-  height:100vh;
-  background:url('Main_web.png') center/cover no-repeat;
+  height:100vh;background:url('Main_web.png') center/cover no-repeat;
   display:flex;align-items:center;justify-content:center;
   text-align:center;padding:20px;position:relative;
 }
@@ -50,7 +50,7 @@ body{background:#000;color:#fff;overflow-x:hidden;}
 .btn-green{background:#00c12d;color:#000;font-weight:700;}
 .btn-line{border:1px solid #aaa;color:#ccc;background:transparent;}
 
-/* SECTION DEFAULT */
+/* COMMON SECTION */
 section{padding:120px 60px;text-align:center;}
 section h2{font-size:40px;font-weight:800;margin-bottom:30px;}
 
@@ -59,7 +59,7 @@ section h2{font-size:40px;font-weight:800;margin-bottom:30px;}
   line-height:1.8;font-size:17px;opacity:.9;
 }
 
-/* --- WHAT WE OFFER (시안 1:1 반영, 큰 카드) --- */
+/* WHAT WE OFFER — (시안 1:1 비율 큰 카드) */
 .offer-titlewrap{
   display:flex;align-items:center;gap:10px;
   max-width:1100px;margin:0 auto 36px;
@@ -75,60 +75,44 @@ section h2{font-size:40px;font-weight:800;margin-bottom:30px;}
   background:#111;border-radius:14px;
   padding:36px 32px;
   text-align:left;
-  opacity:0;
-  transform:translateY(40px);
+  opacity:0;transform:translateY(40px);
   transition:.9s cubic-bezier(.22,1,.36,1);
 }
-.offer-card.show{
-  opacity:1;transform:translateY(0);
-}
+.offer-card.show{opacity:1;transform:translateY(0);}
 .offer-card h3{font-size:20px;font-weight:700;margin-bottom:8px;}
 .offer-sub{font-size:14px;opacity:.75;margin-bottom:14px;}
-.offer-tags{
-  display:flex;flex-wrap:wrap;gap:10px;
-  margin-top:14px;
-}
+.offer-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;}
 .tag{
   border:1px solid #333;border-radius:20px;
   padding:6px 14px;font-size:12px;color:#bbb;
   background:#151515;
 }
 
-/* --- OUR WORK (3개 보임 + 가로 슬라이더 + 자동 1초 + 큰 박스) --- */
+/* OUR WORK – PC:3개 / 모바일:1개 슬라이더 */
 .work-titlewrap{
-  margin-bottom:20px;
-  display:flex;flex-direction:column;align-items:center;
+  margin-bottom:20px;display:flex;flex-direction:column;align-items:center;
 }
-.work-dot{
-  width:26px;height:4px;background:#00c12d;border-radius:10px;margin-bottom:14px;
-}
+.work-dot{width:26px;height:4px;background:#00c12d;border-radius:10px;margin-bottom:14px;}
 
-/* 슬라이더 전체 가운데 정렬 */
 .work-slider-wrapper{
   width:100%;display:flex;justify-content:center;position:relative;margin-top:40px;
 }
-
-/* 컨테이너 */
 .work-slider-container{
-  max-width:1100px;
-  overflow:hidden;
-  position:relative;
+  max-width:1100px;overflow:hidden;position:relative;
 }
-
-/* 내부 트랙 */
 .work-slider{
   display:flex;
-  gap:26px; /* 중간 간격(요청값 반영) */
+  gap:24px;
   transition:transform .7s ease;
 }
 
-/* 카드 */
+/* 큰 카드(시안 비율 적용) */
 .work-slide{
   width:32%;
-  min-width:330px;    /* 큰 카드 */
-  height:270px;       /* 시안 비율대로 더 큼 */
-  border-radius:14px;
+  min-width:330px;
+  height:270px;
   background:#222;
+  border-radius:14px;
   flex-shrink:0;
 
   opacity:0;transform:translateY(40px);
@@ -136,16 +120,16 @@ section h2{font-size:40px;font-weight:800;margin-bottom:30px;}
 }
 .work-slide.show{opacity:1;transform:translateY(0);}
 
-/* Hover 확대 */
 .work-slide:hover{
   transform:scale(1.05);
   box-shadow:0 10px 30px rgba(0,0,0,0.4);
 }
 
-/* 화살표 */
+/* ARROWS (PC only) */
 .arrow{
   position:absolute;top:50%;transform:translateY(-50%);
-  width:48px;height:48px;background:rgba(0,0,0,0.55);
+  width:48px;height:48px;
+  background:rgba(0,0,0,0.55);
   border:1px solid #333;border-radius:50%;
   display:flex;align-items:center;justify-content:center;
   color:#fff;font-size:20px;cursor:pointer;z-index:20;
@@ -155,8 +139,20 @@ section h2{font-size:40px;font-weight:800;margin-bottom:30px;}
 .arrow-left{left:-60px;}
 .arrow-right{right:-60px;}
 
+@media(max-width:900px){
+  .arrow{display:none;} /* 모바일 화살표 숨김 */
+  .work-slide{
+    min-width:260px;
+    height:220px;
+    width:260px;
+  }
+}
+
 /* CONTACT */
-.contact-text{max-width:600px;margin:20px auto;font-size:16px;opacity:.85;line-height:1.7;}
+.contact-text{
+  max-width:600px;margin:20px auto;
+  font-size:16px;opacity:.85;line-height:1.7;
+}
 .contact-btnwrap{text-align:right;max-width:1100px;margin:auto;margin-top:40px;}
 .contact-btn{
   padding:12px 32px;border-radius:26px;border:1px solid #ddd;
@@ -174,20 +170,6 @@ footer{padding:60px;text-align:center;font-size:13px;opacity:.7;}
   transition:.9s cubic-bezier(.22,1,.36,1);
 }
 .fade-up.show{opacity:1;transform:translateY(0);}
-
-@media(max-width:900px){
-  .work-slide{min-width:260px;height:220px;width:260px;}
-  .arrow-left{left:10px;}
-  .arrow-right{right:10px;}
-}
-
-@media(max-width:768px){
-  section{padding:80px 24px;}
-  .nav-header{padding:14px 20px;}
-  .hero{background:url('Main_mobile.png') center/cover no-repeat;}
-  .hero h1{font-size:28px;}
-  .btn-area{flex-direction:column;gap:16px;}
-}
 </style>
 </head>
 
@@ -282,7 +264,7 @@ footer{padding:60px;text-align:center;font-size:13px;opacity:.7;}
   </div>
 </section>
 
-<!-- OUR WORK (3 보임 + 슬라이드) -->
+<!-- OUR WORK -->
 <section id="work">
   <div class="work-titlewrap fade-up">
     <div class="work-dot"></div>
@@ -292,23 +274,20 @@ footer{padding:60px;text-align:center;font-size:13px;opacity:.7;}
 
   <div class="work-slider-wrapper fade-up">
 
-    <!-- LEFT ARROW -->
+    <!-- LEFT ARROW (PC) -->
     <div class="arrow arrow-left">‹</div>
 
-    <!-- SLIDER -->
     <div class="work-slider-container">
       <div class="work-slider">
-
         <div class="work-slide" style="background:url('portfolio_1.png') center/cover;"></div>
         <div class="work-slide" style="background:url('portfolio_2.png') center/cover;"></div>
         <div class="work-slide" style="background:url('portfolio_3.png') center/cover;"></div>
         <div class="work-slide" style="background:url('portfolio_4.png') center/cover;"></div>
         <div class="work-slide" style="background:url('portfolio_5.png') center/cover;"></div>
-
       </div>
     </div>
 
-    <!-- RIGHT ARROW -->
+    <!-- RIGHT ARROW (PC) -->
     <div class="arrow arrow-right">›</div>
 
   </div>
@@ -337,7 +316,7 @@ footer{padding:60px;text-align:center;font-size:13px;opacity:.7;}
 </footer>
 
 <script>
-// Smooth Scroll
+// Smooth scroll navigation
 document.querySelectorAll('.nav-menu a').forEach(link=>{
   link.addEventListener('click',(e)=>{
     e.preventDefault();
@@ -348,16 +327,17 @@ document.querySelectorAll('.nav-menu a').forEach(link=>{
   });
 });
 
-// Fade-up + Stagger
+// Fade-up + stagger animation
 const io=new IntersectionObserver((entries)=>{
   entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show');});
 },{threshold:0.15});
+
 document.querySelectorAll('.fade-up,.offer-card,.work-slide').forEach((el,i)=>{
-  el.style.transitionDelay=(i*0.08)+'s';
+  el.style.transitionDelay=(i*0.08)+"s";
   io.observe(el);
 });
 
-// SLIDER LOGIC
+// SLIDER (1초 자동 슬라이드)
 const slider=document.querySelector(".work-slider");
 const slides=document.querySelectorAll(".work-slide");
 const btnLeft=document.querySelector(".arrow-left");
@@ -365,25 +345,26 @@ const btnRight=document.querySelector(".arrow-right");
 let index=0;
 
 function updateSlider(){
-  const slideWidth=slides[0].offsetWidth+26;
+  const slideWidth=slides[0].offsetWidth+24;
   slider.style.transform=`translateX(-${index*slideWidth}px)`;
 }
 
+// arrows (PC)
 btnRight.addEventListener("click",()=>{
   index=(index+1)%slides.length;
   updateSlider();
 });
-
 btnLeft.addEventListener("click",()=>{
   index=(index-1+slides.length)%slides.length;
   updateSlider();
 });
 
-// Auto Slide (1초)
+// auto play (1초)
 setInterval(()=>{
   index=(index+1)%slides.length;
   updateSlider();
 },1000);
+
 </script>
 
 </body>
