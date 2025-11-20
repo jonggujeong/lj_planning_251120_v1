@@ -1,415 +1,190 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LJ기획 – LJ Planning</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LJ Planning</title>
 
-<style>
-/* RESET */
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Pretendard','Noto Sans KR',sans-serif;}
-body{background:#000;color:#fff;overflow-x:hidden;}
-img{max-width:100%;display:block;}
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-/* HEADER ------------------------------------------------*/
-.nav-header{
-    position:fixed;top:0;left:0;width:100%;z-index:100;
-    padding:18px 60px;
-    background:linear-gradient(to bottom,rgba(0,0,0,.6),transparent);
-}
-.nav-inner{
-    max-width:1200px;margin:auto;
-    display:flex;justify-content:space-between;align-items:center;
-}
-.nav-logo{font-size:18px;font-weight:700;}
-.nav-logo span{color:#00c12d;font-weight:900;}
-.nav-menu{display:flex;gap:26px;}
-.nav-menu a{color:#fff;font-size:14px;text-decoration:none;opacity:.85;}
-.nav-menu a:hover{opacity:1;}
-.hamburger{display:none;font-size:28px;color:#fff;cursor:pointer;}
+  <style>
+    * {margin:0;padding:0;box-sizing:border-box;}
+    body {font-family:'Pretendard','Noto Sans KR',sans-serif;background:#000;color:#fff;overflow-x:hidden;}
+    a {color:inherit;text-decoration:none;}
 
-/* MOBILE MENU */
-.mobile-menu{
-    display:none;flex-direction:column;
-    position:fixed;top:0;right:0;width:70%;height:100vh;
-    background:#111;padding:80px 30px;z-index:9999;
-    opacity:0;transition:.3s;
-}
-.mobile-menu.show{display:flex;opacity:1;}
-.mobile-menu a{
-    color:#fff;font-size:20px;margin-bottom:24px;text-decoration:none;
-}
-.close-menu{
-    position:absolute;top:20px;right:20px;font-size:28px;color:#fff;cursor:pointer;
-}
+    .topbar {
+      position:fixed;top:0;left:0;width:100%;
+      padding:20px 60px;
+      display:flex;justify-content:space-between;align-items:center;
+      background:linear-gradient(to bottom,rgba(0,0,0,.6),transparent);
+      z-index:100;
+    }
+    .menu a {margin-left:20px;cursor:pointer;font-size:14px;}
 
-/* HERO --------------------------------------------------*/
-.hero{
-    height:100vh;
-    background:url('Main_web.png') center/cover no-repeat;
-    display:flex;align-items:center;justify-content:center;
-    position:relative;text-align:center;
-}
-.hero-overlay{
-    position:absolute;inset:0;
-    background:linear-gradient(transparent,rgba(0,0,0,.92));
-}
-.hero .inner{position:relative;z-index:10;}
-.hero h1{font-size:46px;font-weight:800;line-height:1.25;}
-.hero p{margin-top:12px;font-size:17px;opacity:.85;}
-.btn-area{margin-top:32px;display:flex;gap:20px;justify-content:center;}
-.btn{
-    padding:12px 28px;border-radius:30px;font-size:15px;cursor:pointer;display:inline-block;
-}
-.btn-green{background:#00c12d;color:#000;font-weight:700;}
-.btn-line{background:none;border:1px solid #aaa;color:#ccc;}
+    .hero {
+      height:100vh;min-height:620px;
+      display:flex;align-items:center;justify-content:center;text-align:center;
+      position:relative;overflow:hidden;
+    }
+    .hero::before{
+      content:"";position:absolute;inset:0;
+      background:url("Main_web.png") center/cover no-repeat;
+      filter:brightness(0.75);
+    }
+    @media(max-width:768px){
+      .hero::before{background:url("Main_mobile.png") center/cover no-repeat;}
+    }
+    .hero-inner{position:relative;z-index:2;}
 
-/* SECTION COMMON ----------------------------------------*/
-section{padding:120px 60px;text-align:center;}
-section h2{font-size:40px;font-weight:800;margin-bottom:32px;}
-.purpose-text{
-    max-width:700px;margin:auto;opacity:.9;font-size:17px;line-height:1.8;
-}
+    .section-inner{max-width:1120px;margin:auto;padding:120px 24px 140px;text-align:center;}
+    .section-title{font-size:40px;font-weight:700;margin-bottom:12px;}
 
-/* WHAT WE OFFER ------------------------------------------*/
-.offer-grid{
-    max-width:1100px;margin:auto;
-    display:grid;grid-template-columns:repeat(2,1fr);gap:26px;text-align:center;
-}
-.offer-card{
-    background:#111;border-radius:14px;padding:36px 32px;text-align:center;
-}
-.offer-card h3{font-size:20px;margin-bottom:10px;}
-.offer-sub{font-size:14px;margin-bottom:16px;opacity:.75;}
-.offer-tags{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
-.tag{
-    padding:6px 14px;border-radius:20px;background:#151515;border:1px solid #333;
-    font-size:12px;color:#bbb;
-}
+    .offer-grid{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:40px;
+    }
+    @media(max-width:1024px){.offer-grid{grid-template-columns:repeat(2,1fr);}}
+    @media(max-width:768px){.offer-grid{grid-template-columns:1fr;}}
 
-/* OUR WORK ----------------------------------------------*/
-.work-titlewrap{text-align:center;margin-bottom:20px;}
-.work-dot{
-    width:26px;height:4px;border-radius:10px;
-    background:#00c12d;margin:0 auto 18px;
-}
+    .offer-card{
+      background:#121212;padding:28px;border-radius:16px;box-shadow:0 10px 20px rgba(0,0,0,.4);
+    }
 
-/* ===================== PC 슬라이더 – 완전한 중앙정렬 ==================== */
-.pc-slider-wrapper{
-    width:100%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    position:relative;
-    margin-top:40px;
-}
+    /* ---------- OUR WORK ---------- */
+    #work{background:#000;}
 
-.pc-slider-container{
-    width:100%;
-    max-width:1200px;
-    overflow:hidden;
-    display:flex;
-    justify-content:center;
-    position:relative;
-}
+    .slider{
+      width:100%;max-width:1120px;margin:auto;
+      overflow:hidden;border-radius:16px;
+      height:260px;
+    }
+    .slide-track{display:flex;width:400%;transition:transform .7s ease-in-out;}
+    .slide{width:100%;flex-shrink:0;display:flex;justify-content:center;align-items:center;}
+    .slide img{
+      width:auto;max-width:50%;max-height:240px;object-fit:cover;border-radius:12px;
+    }
 
-.pc-slider-track{
-    display:flex;
-    gap:24px;
-    align-items:center;
-    transition:transform .6s ease;
-    will-change:transform;
-}
+    footer{
+      border-top:1px solid rgba(255,255,255,.15);
+      padding:36px 24px;font-size:12px;opacity:.7;
+    }
 
-.pc-slide{
-    width:360px;
-    height:280px;
-    background:#222;
-    background-size:cover;
-    background-position:center;
-    border-radius:14px;
-    flex-shrink:0;
-    transition:.3s;
-}
-.pc-slide:hover{
-    transform:scale(1.05);
-    box-shadow:0 10px 30px rgba(0,0,0,.4);
-}
+    .fade-section{opacity:0;transform:translateY(40px);transition:opacity .8s,transform .8s;}
+    .fade-section.visible{opacity:1;transform:translateY(0);}
 
-/* ARROWS */
-.arrow{
-    position:absolute;top:50%;
-    transform:translateY(-50%);
-    width:48px;height:48px;border-radius:50%;
-    background:rgba(0,0,0,.55);
-    display:flex;align-items:center;justify-content:center;
-    color:#fff;font-size:20px;border:1px solid #333;
-    cursor:pointer;z-index:20;
-}
-.arrow-left{left:-60px;}
-.arrow-right{right:-60px;}
-.arrow:hover{background:#00c12d;color:#000;}
-
-/* MOBILE WORK -------------------------------------------*/
-.mobile-work{display:none;flex-direction:column;align-items:center;gap:20px;margin-top:20px;}
-.mobile-work-item{
-    width:95%;max-width:500px;height:270px;border-radius:12px;
-    background-size:cover;background-position:center;
-}
-
-/* CONTACT -------------------------------------------------*/
-.contact-text{
-    max-width:600px;margin:20px auto;
-    font-size:16px;line-height:1.7;opacity:.85;
-}
-.contact-btnwrap{text-align:center;margin-top:40px;}
-.contact-btn{
-    padding:12px 32px;border-radius:28px;background:#eee;color:#222;
-    border:1px solid #eee;font-weight:700;display:inline-block;
-}
-
-/* FOOTER --------------------------------------------------*/
-footer{padding:60px;text-align:center;opacity:.75;font-size:13px;}
-.footer-line{
-    width:100%;height:1px;background:#333;margin:50px 0;
-}
-.footer-info{line-height:2;}
-.copy{margin-top:20px;color:#777;font-size:12px;}
-
-/* ---------------- MOBILE VERSION ------------------------*/
-@media(max-width:900px){
-    .nav-menu{display:none;}
-    .hamburger{display:block;}
-
-    .hero{background:url('Main_mobile.png') center/cover no-repeat;}
-    .hero h1{font-size:28px;}
-
-    /* OFFER 모바일 */
-    .offer-grid{grid-template-columns:1fr;display:flex;flex-direction:column;align-items:center;}
-    .offer-card{width:95%;padding:26px 20px;}
-
-    /* WORK 모바일 */
-    .pc-slider-wrapper{display:none;}
-    .arrow{display:none;}
-    .mobile-work{display:flex;}
-
-    section{padding:80px 24px;}
-}
-</style>
+    .btn-primary{
+      padding:10px 26px;
+      background:#16c72e;color:#000;
+      border-radius:999px;font-size:14px;font-weight:600;
+      display:inline-block;
+      transition:background .15s ease,transform .15s ease;
+    }
+    .btn-primary:hover{
+      background:#1be538;
+      transform:translateY(-2px);
+    }
+    .btn-outline{
+      padding:10px 22px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.4);font-size:14px;
+      display:inline-block;
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- HEADER -->
-<header class="nav-header">
-  <div class="nav-inner">
-    <div class="nav-logo"><span>LJ</span> PLANNING</div>
-
-    <nav class="nav-menu">
-      <a href="#purpose">About</a>
-      <a href="#offer">Services</a>
-      <a href="#work">Portfolio</a>
-      <a href="#contact">Contact</a>
-    </nav>
-
-    <div class="hamburger" onclick="openMenu()">☰</div>
-  </div>
+<header class="topbar">
+  <div class="logo">LJ PLANNING</div>
+  <nav class="menu">
+    <a data-target="home">Home</a>
+    <a data-target="purpose">About</a>
+    <a data-target="offer">Services</a>
+    <a data-target="work">Portfolio</a>
+  </nav>
 </header>
 
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
-  <div class="close-menu" onclick="closeMenu()">✕</div>
-  <a href="#purpose" onclick="closeMenu()">About</a>
-  <a href="#offer" onclick="closeMenu()">Services</a>
-  <a href="#work" onclick="closeMenu()">Portfolio</a>
-  <a href="#contact" onclick="closeMenu()">Contact</a>
-</div>
-
 <!-- HERO -->
-<div class="hero">
-  <div class="inner">
-    <h1>We go beyond strategy<br>to create the future of your brand.</h1>
-    <p>기술과 창의성의 결합이 만드는 브랜드 성장</p>
-    <div class="btn-area">
-      <div class="btn btn-green">Learn More</div>
-      <div class="btn btn-line">서비스 살펴보기</div>
-    </div>
+<section id="home" class="hero fade-section">
+  <div class="hero-inner">
+    <h1 style="font-size:40px;font-weight:700;line-height:1.3;margin-bottom:16px;">
+      We go beyond strategy<br>to create the future of your brand.
+    </h1>
+    <p style="opacity:.8;margin-bottom:28px;">기술과 창의성의 결합이 만드는 브랜드 성장</p>
+
+    <!-- Learn More 버튼을 네이버로 이동하도록 수정 -->
+    <a href="https://www.naver.com" target="_blank" class="btn-primary">Learn More</a>
+
+    <a class="btn-outline" data-target="work" style="margin-left:12px;">서비스 살펴보기</a>
   </div>
-  <div class="hero-overlay"></div>
-</div>
+</section>
 
 <!-- PURPOSE -->
-<section id="purpose">
-  <h2>Our Purpose</h2>
-  <p class="purpose-text">
-    데이터를 기반으로 지속 가능한 마케팅 생태계를 구축하며<br>
-    고객의 비전을 실질적 성과로 연결하는 스마트 마케팅 솔루션 기업을 목표로 합니다.
-  </p>
-</section>
-
-<!-- WHAT WE OFFER -->
-<section id="offer">
-  <h2>What We Offer</h2>
-
-  <div class="offer-grid">
-
-    <div class="offer-card">
-      <h3>Brand Strategy</h3>
-      <p class="offer-sub">브랜드 전략</p>
-      <div class="offer-tags">
-        <span class="tag">#MarketingStrategy</span>
-        <span class="tag">#Branding</span>
-        <span class="tag">#IMC</span>
-        <span class="tag">#BrandIdentity</span>
-      </div>
-    </div>
-
-    <div class="offer-card">
-      <h3>Outdoor & Print</h3>
-      <p class="offer-sub">오프라인 광고 · 인쇄물</p>
-      <div class="offer-tags">
-        <span class="tag">#Signage</span>
-        <span class="tag">#UrbanMedia</span>
-        <span class="tag">#OOH</span>
-        <span class="tag">#PosterAds</span>
-        <span class="tag">#TransitAds</span>
-      </div>
-    </div>
-
-    <div class="offer-card">
-      <h3>Web & Digital</h3>
-      <p class="offer-sub">디지털 콘텐츠 & 웹 제작</p>
-      <div class="offer-tags">
-        <span class="tag">#UIUX</span>
-        <span class="tag">#WebDesign</span>
-        <span class="tag">#ContentMarketing</span>
-        <span class="tag">#SocialMedia</span>
-      </div>
-    </div>
-
-    <div class="offer-card">
-      <h3>AI Solutions</h3>
-      <p class="offer-sub">AI 기반 마케팅 솔루션</p>
-      <div class="offer-tags">
-        <span class="tag">#DataDriven</span>
-        <span class="tag">#AIMarketing</span>
-        <span class="tag">#Automation</span>
-      </div>
-    </div>
-
+<section id="purpose" class="fade-section">
+  <div class="section-inner">
+    <h2 class="section-title">Our Purpose</h2>
+    <p style="line-height:1.7;opacity:.9;margin-top:20px;">
+      데이터와 인공지능을 기반으로 지속 가능한 마케팅 생태계를 구축하며,<br>
+      고객의 비전을 실질적 성과로 연결하는 스마트 마케팅 솔루션 기업을 목표로 합니다.
+    </p>
   </div>
 </section>
 
-<!-- OUR WORK -->
-<section id="work">
-  <div class="work-titlewrap">
-    <div class="work-dot"></div>
-    <h2>Our Work</h2>
-    <p>Discover more through the projects below.</p>
+<!-- OFFER -->
+<section id="offer" class="fade-section">
+  <div class="section-inner">
+    <h2 class="section-title">What We Offer</h2>
+    <div class="offer-grid">
+      <div class="offer-card">Brand Strategy</div>
+      <div class="offer-card">Outdoor & Print</div>
+      <div class="offer-card">Web & Digital</div>
+      <div class="offer-card">AI Solutions</div>
+    </div>
   </div>
+</section>
 
-  <!-- PC SLIDER -->
-  <div class="pc-slider-wrapper">
+<!-- WORK -->
+<section id="work" class="fade-section">
+  <div class="section-inner">
+    <h2 class="section-title">Our Work</h2>
+    <p style="opacity:.7;margin-bottom:20px;">Discover more through the projects below.</p>
 
-    <div class="arrow arrow-left" id="arrowLeft">‹</div>
-
-    <div class="pc-slider-container">
-      <div class="pc-slider-track" id="pcSlider">
-
-        <div class="pc-slide" style="background:url('portfolio_1.png') center/cover;"></div>
-        <div class="pc-slide" style="background:url('portfolio_2.png') center/cover;"></div>
-        <div class="pc-slide" style="background:url('portfolio_3.png') center/cover;"></div>
-        <div class="pc-slide" style="background:url('portfolio_4.png') center/cover;"></div>
-        <div class="pc-slide" style="background:url('portfolio_5.png') center/cover;"></div>
-
+    <div class="slider">
+      <div class="slide-track" id="slideTrack">
+        <div class="slide"><img src="portfolio01.png"></div>
+        <div class="slide"><img src="portfolio02.png"></div>
+        <div class="slide"><img src="portfolio03.png"></div>
+        <div class="slide"><img src="portfolio04.png"></div>
       </div>
     </div>
-
-    <div class="arrow arrow-right" id="arrowRight">›</div>
-  </div>
-
-  <!-- MOBILE LIST -->
-  <div class="mobile-work">
-    <div class="mobile-work-item" style="background:url('portfolio_1.png') center/cover;"></div>
-    <div class="mobile-work-item" style="background:url('portfolio_2.png') center/cover;"></div>
-    <div class="mobile-work-item" style="background:url('portfolio_3.png') center/cover;"></div>
-    <div class="mobile-work-item" style="background:url('portfolio_4.png') center/cover;"></div>
-    <div class="mobile-work-item" style="background:url('portfolio_5.png') center/cover;"></div>
-  </div>
-
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <h2>Contact Us</h2>
-  <p class="contact-text">
-    목표와 예산에 맞춘 최적 솔루션을 제안드립니다.<br>
-    문의를 남겨주시면 상세히 안내드리겠습니다.
-  </p>
-  <div class="contact-btnwrap">
-    <button class="contact-btn">문의하기</button>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <div class="footer-line"></div>
-  <div class="footer-info">
-    엘제이컴퍼니 | 대표자: 정종구 | 사업자등록번호: 000-00-00000<br>
-    T. 02-0000-0000 | E-mail :
-  </div>
-  <div class="copy">© LJ PLANNING</div>
+  LJ PLANNING | © All Rights Reserved
 </footer>
 
 <script>
-/* MOBILE MENU CONTROL */
-function openMenu(){document.getElementById("mobileMenu").classList.add("show");}
-function closeMenu(){document.getElementById("mobileMenu").classList.remove("show");}
-
-/* SMOOTH SCROLL */
-document.querySelectorAll('.nav-menu a, .mobile-menu a').forEach(link=>{
-    link.addEventListener("click",e=>{
-        e.preventDefault();
-        const target=document.querySelector(link.getAttribute("href"));
-        const top=target.getBoundingClientRect().top + window.pageYOffset - 70;
-        window.scrollTo({top,behavior:"smooth"});
-        closeMenu();
+  // 스크롤 이동
+  document.querySelectorAll("[data-target]").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      document.getElementById(btn.dataset.target).scrollIntoView({behavior:"smooth"});
     });
-});
+  });
 
-/* ===================== PC SLIDER 완전 중앙정렬 ===================== */
-const track = document.getElementById("pcSlider");
-const slides = document.querySelectorAll(".pc-slide");
-let index = 0;
+  // 페이드 효과
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting) e.target.classList.add("visible");
+      else e.target.classList.remove("visible");
+    });
+  },{threshold:0.15});
+  document.querySelectorAll(".fade-section").forEach(sec=>io.observe(sec));
 
-function updateSlider() {
-    const slideWidth = slides[0].offsetWidth + 24; 
-    const totalWidth = slideWidth * slides.length;
-    const centerOffset = (totalWidth / 2) - (slideWidth / 2);
-
-    const moveX = centerOffset - (index * slideWidth);
-
-    track.style.transform = `translateX(${moveX}px)`;
-}
-
-document.getElementById("arrowRight").onclick = () => {
-    index = (index + 1) % slides.length;
-    updateSlider();
-};
-document.getElementById("arrowLeft").onclick = () => {
-    index = (index - 1 + slides.length) % slides.length;
-    updateSlider();
-};
-
-window.addEventListener("resize", updateSlider);
-window.onload = updateSlider;
-
-setInterval(() => {
-    if(window.innerWidth > 900){
-        index = (index + 1) % slides.length;
-        updateSlider();
-    }
-}, 2000);
+  // 자동 슬라이드
+  let idx=0;
+  const track=document.getElementById("slideTrack");
+  setInterval(()=>{
+    idx=(idx+1)%4;
+    track.style.transform=`translateX(-${idx*100}%)`;
+  },2000);
 </script>
 
 </body>
